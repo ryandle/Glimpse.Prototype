@@ -59,10 +59,10 @@ namespace Glimpse.Server.Storage
 
         public Task<IEnumerable<string>> RetrieveByType(params string[] types)
         {
-            if (types == null || types.Length == 0)
-                throw new ArgumentException("At least one type must be specified.", nameof(types));
+            //if (types == null || types.Length == 0)
+                //throw new ArgumentException("At least one type must be specified.", nameof(types));
 
-            return Task.Run(() => _messages.Where(m => m.Types.Intersect(types).Any()).Select(m => m.Payload));
+            return Task.Run(() => _messages.Select(m => m.Payload));
         }
 
         public Task<IEnumerable<string>> GetByRequestId(Guid id)

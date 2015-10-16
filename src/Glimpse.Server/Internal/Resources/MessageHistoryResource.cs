@@ -22,16 +22,16 @@ namespace Glimpse.Server.Internal.Resources
         {
             var response = context.Response;
 
-            var types = parameters.ParseEnumerable("types").ToArray();
+            /*var types = parameters.ParseEnumerable("types").ToArray();
 
             if (types.Length == 0)
             {
                 response.StatusCode = 404;
                 await response.WriteAsync("Required parameter 'types' is missing.");
                 return;
-            }
+            }*/
 
-            var list = await _store.RetrieveByType(types);
+            var list = await _store.RetrieveByType(null);
 
             response.Headers[HeaderNames.ContentType] = "application/json";
             await response.WriteAsync(list.ToJsonArray());
